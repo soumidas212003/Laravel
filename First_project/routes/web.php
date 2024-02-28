@@ -31,10 +31,17 @@ Route::view('/sec','secondpage');
 //         return "<h1>No ID Found</h1>";
 //     }
 // });
-Route::get('/post/{id?}/comment/{commentid?}', function (string $value=null, string $comment=null) {
-        if($value && $comment){
-            return "<h1>ID is: ".$value."</h1></n><h2>comment id : ".$comment."</h2>";
-        }else{
-            return "<h1>No ID Found</h1>";
-        }
-    });
+
+// Route::get('/post/{id?}/comment/{commentid?}', function (string $value=null, string $comment=null) {
+//         if($value && $comment){
+//             return "<h1>ID is: ".$value."</h1></n><h2>comment id : ".$comment."</h2>";
+//         }else{
+//             return "<h1>No ID Found</h1>";
+//         }
+//     });
+
+Route::get('/post/{id}/comment/{commentid}', function (string $value, string $comment) {
+
+    return "<h1>ID is: ".$value." & comment id : ".$comment."</h1>";
+
+})->where('id','[0-9]+')->whereAlpha('commentid');
